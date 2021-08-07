@@ -8,11 +8,13 @@ from django.contrib.auth import login, logout, authenticate
 from django.views.decorators.csrf import csrf_exempt
 
 
+# chat view
 def chat(request):
     context = {"user": request.user}
     return render(request, "chat/index.html", context)
 
 
+# utility to choose random jokes
 def respond_to_websockets(message):
     jokes = {
         "stupid": [
@@ -47,6 +49,7 @@ def respond_to_websockets(message):
     return result_message
 
 
+# signup
 @csrf_exempt
 def signup(request):
     if request.method == "GET":
@@ -66,6 +69,7 @@ def signup(request):
         return redirect(chat)
 
 
+# login front
 @csrf_exempt
 def Flogin(request):
     if request.method == "GET":
@@ -81,11 +85,13 @@ def Flogin(request):
             return redirect(Flogin)
 
 
+# logout front
 def Flogout(request):
     logout(request)
     return redirect(chat)
 
 
+# show stats of count per user
 def stat(request):
     context = {
         "bs": ButtonCalls.objects.all()
