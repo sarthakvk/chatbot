@@ -1,0 +1,27 @@
+{% extends "chat/base.html" %}
+{% load static %}
+
+{% block base %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">User</th>
+      <th scope="col">Dumb Count</th>
+      <th scope="col">Fat Count</th>
+      <th scope="col">Stupid Count</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for i in bs %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{% if i.user %} {{i.user.name}} {% else %} Anonymous Users {% endif %}</td>
+      <td>{{i.dumb_count}}</td>
+      <td>{{i.fat_count}}</td>
+      <td>{{i.stupid_count}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

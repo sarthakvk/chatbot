@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="{% static 'chat/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'chat/favicon.ico' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'chat/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'chat/css/chat.css' %}">
+
+    <link href="{% static 'chat/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <base target="_blank" />
+    <title>Websockets Bot</title>
+    <div class="container bootstrap snippets bootdey">
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li {% if "/bot/" in request.path %}class="active"{% endif %}><a href="{% url 'chat' %}" target="_self" >Chat</a></li>
+                <li {% if "/stat/" in request.path %}class="active"{% endif %} ><a href="{% url 'stat' %}" target="_self">Chat Stats</a></li>
+                {% if user.is_anonymous %}
+                <li {% if "/signup/" in request.path %} class="active"{% endif %}><a href="{% url 'signup' %}" target="_self">Register</a></li>
+                <li {% if "/login/" in request.path %}class="active"{% endif %}><a href="{% url 'login' %}" target="_self">login</a></li>
+                {% else %}
+                <li><a href="{% url 'logout' %}" target="_self">logout</a></li>
+                {% endif %}
+            </ul>
+            <h3 class="text-muted prj-name">ChatBot: {% if not user.is_anonymous %}Welcome, {{user.name}}.{% endif %}</h3>
+        </div>
+</head>
+
+<body>
+    {% block base %}
+    {% endblock %}
+</body>
+
+</html>
