@@ -64,8 +64,8 @@ def signup(request):
             user.set_password(password)
             user.save()
         except Exception as e:
-            raise e
             return redirect(signup)
+        login(request,user)
         return redirect(chat)
 
 
