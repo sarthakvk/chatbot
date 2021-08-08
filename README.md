@@ -11,7 +11,7 @@ http://13.233.168.148/chat/bot/
 1. Run postgresql server and create database named `chatbot`
 2. edit `pg_hba.conf` to set `trust` method, so that we can connect to database without password ( I am not using authentication because whoever runs this code then should have same password for postgres user which might not be desirable.)
 3. create virtual env and activate it.(`python -m venv venv && source venv/bin/activate`)
-5. run `pip install -r requirements.txt`
+5. run `pip install -r requirements.txt` (if you face errors installing psycopg2 package look at this answer for clue https://stackoverflow.com/questions/5420789/how-to-install-psycopg2-with-pip-on-python)
 4. run `python chatbot/manage.py migrate`
 5. then `python chatbot/manage.py runserver`
 6. Goto `localhost:8000/chat/bot`
