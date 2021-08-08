@@ -1,11 +1,20 @@
-## Chatbot
+# Chatbot
+
+## Live Demo
+http://13.233.168.148/chat/bot/
+
+## Steps to runserver with Docker
+1. Install Docker and Docker Compose (https://docs.docker.com/compose/install/)
+2. Docker should be running
+3. In the project root run `docker-compose up`
+4. Go to `localhost:8000` to view chatbot
+
+## Runserver without Docker
 
 ### dependencies
 1. Postgresql
 2. Python >= 3.8
 
-### Live Demo
-http://13.233.168.148/chat/bot/
 
 ### Steps to runserver
 1. Run postgresql server and create database named `chatbot`
