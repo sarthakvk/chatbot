@@ -1,0 +1,25 @@
+services:
+    web:
+        build: .
+        ports:
+            - "8000:8000"
+        volumes:
+            - .:/chatbot
+        depends_on:
+            - psql
+        networks:
+            - chatbot
+        links:
+            - psql:postgres
+        restart: on-failure
+    psql:
+        image: postgres
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_DB: chatbot
+            POSTGRES_HOST_AUTH_METHOD: trust
+        networks:
+            - chatbot
+networks:
+    chatbot:
+        driver: bridge
